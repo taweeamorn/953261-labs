@@ -5,32 +5,30 @@
 
 // Bug 1 — the function runs, but prints undefined.
 function triple(n) {
-  n * 3;
+  return n * 3;
 }
 
 // Bug 2 — same problem, arrow-function version.
 const shout = (names) => {
-  names.map((name) => name.toUpperCase());
+  return names.map((name) => name.toUpperCase());
 };
 
 // Bug 3 — crashes with "TypeError: Assignment to constant variable."
 function addBonus(score) {
-  const total = score;
+  let total = score;
   total = total + 5;
   return total;
 }
 
 // Bug 4 — values from a form or a URL are always strings.
 function addPrices(priceText1, priceText2) {
-  return priceText1 + priceText2;
+  return Number(priceText1) + Number(priceText2);
 }
 
 // Bug 5 — gives the wrong answer. Rewrite it with reduce (no for loop).
 function average(nums) {
   let sum = 0;
-  for (let i = 1; i <= nums.length; i++) {
-    sum += nums[i];
-  }
+  sum = nums.reduce((acc, num) => acc + num, 0);
   return sum / nums.length;
 }
 
